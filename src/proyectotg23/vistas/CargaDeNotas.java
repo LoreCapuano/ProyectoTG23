@@ -1,6 +1,7 @@
 package proyectotg23.vistas;
 
 import java.awt.event.ItemEvent;
+import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -35,6 +36,9 @@ public class CargaDeNotas extends javax.swing.JInternalFrame {
     public CargaDeNotas() {
 
         initComponents();
+        jBguardar.setMnemonic(KeyEvent.VK_N);
+        jBsalir.setMnemonic(KeyEvent.VK_S);
+
         cargarCombo();
         armarCabecera();
 
@@ -101,6 +105,7 @@ public class CargaDeNotas extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(jTmaterias);
 
+        jBguardar.setMnemonic('G');
         jBguardar.setText("Guardar");
         jBguardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -108,6 +113,7 @@ public class CargaDeNotas extends javax.swing.JInternalFrame {
             }
         });
 
+        jBsalir.setMnemonic('S');
         jBsalir.setText("Salir");
         jBsalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
