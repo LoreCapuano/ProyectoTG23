@@ -1,4 +1,3 @@
-
 package proyectotg23.accesoADatos;
 
 import java.sql.Connection;
@@ -11,8 +10,8 @@ import java.util.List;
 import javax.swing.JOptionPane;
 import proyectotg23.entidades.Materia;
 
-
 public class MateriaData {
+
     private Connection con = null;
 
     public MateriaData() {
@@ -21,8 +20,6 @@ public class MateriaData {
 
     }
 
-    //manejo en CRUD = CREATE, READ, UPDATE, DELETE
-    // CREATE
     public void nuevaMateria(Materia materia) {
 
         String sql = "INSERT INTO materia (nombre, año, estado) VALUES (?,?,?)";
@@ -50,7 +47,6 @@ public class MateriaData {
         }
 
     }
-    //UPDATE
 
     public void modificarMateria(Materia materia) {
 
@@ -78,7 +74,7 @@ public class MateriaData {
 
     }
 
-    //DELETE
+    
     public void eliminarMateria(int id) {
         String sql = "UPDATE  materia SET estado = 0 WHERE idMateria=?";
         PreparedStatement ps;
@@ -99,7 +95,7 @@ public class MateriaData {
 
     }
 
-    //READ
+    
     public Materia buscarMateria(int id) {
 
         String slq = "SELECT idMateria, nombre, año FROM materia WHERE idMateria = ? AND estado = 1";
@@ -131,8 +127,7 @@ public class MateriaData {
         return materia;
 
     }
-//Listar Maerias
-   
+
     public List<Materia> ListarMaterias() {
 
         String sql = "SELECT idMateria, nombre, año FROM materia WHERE estado = 1";
@@ -153,7 +148,7 @@ public class MateriaData {
                 Materias.add(materia);
 
             }
-            
+
             ps.close();
 
         } catch (SQLException ex) {
@@ -162,4 +157,5 @@ public class MateriaData {
 
         return Materias;
     }
+
 }

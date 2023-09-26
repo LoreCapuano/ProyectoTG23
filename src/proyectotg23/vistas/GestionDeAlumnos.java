@@ -1,6 +1,6 @@
-
 package proyectotg23.vistas;
 
+import java.awt.event.KeyEvent;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.time.ZoneId;
@@ -12,6 +12,13 @@ public class GestionDeAlumnos extends javax.swing.JInternalFrame {
 
     public GestionDeAlumnos() {
         initComponents();
+        jBnuevo.setMnemonic(KeyEvent.VK_N);
+        jBeliminar.setMnemonic(KeyEvent.VK_E);
+        jBmodificar.setMnemonic(KeyEvent.VK_M);
+        jBsalir.setMnemonic(KeyEvent.VK_S);
+        jBbuscarporDNI.setMnemonic(KeyEvent.VK_B);
+        jBbuscarporID.setMnemonic(KeyEvent.VK_U);
+        jBlimpiar.setMnemonic(KeyEvent.VK_L);
 
     }
     private AlumnoData aluData = new AlumnoData();
@@ -66,6 +73,7 @@ public class GestionDeAlumnos extends javax.swing.JInternalFrame {
 
         jLabel6.setText("Fecha de Nacimiento");
 
+        jBnuevo.setMnemonic('N');
         jBnuevo.setText("Nuevo");
         jBnuevo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -73,6 +81,7 @@ public class GestionDeAlumnos extends javax.swing.JInternalFrame {
             }
         });
 
+        jBeliminar.setMnemonic('E');
         jBeliminar.setText("Eliminar");
         jBeliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -80,6 +89,7 @@ public class GestionDeAlumnos extends javax.swing.JInternalFrame {
             }
         });
 
+        jBmodificar.setMnemonic('M');
         jBmodificar.setText("Modificar");
         jBmodificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -87,6 +97,7 @@ public class GestionDeAlumnos extends javax.swing.JInternalFrame {
             }
         });
 
+        jBsalir.setMnemonic('S');
         jBsalir.setText("Salir");
         jBsalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -94,6 +105,7 @@ public class GestionDeAlumnos extends javax.swing.JInternalFrame {
             }
         });
 
+        jBbuscarporDNI.setMnemonic('B');
         jBbuscarporDNI.setText("Buscar");
         jBbuscarporDNI.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -103,6 +115,7 @@ public class GestionDeAlumnos extends javax.swing.JInternalFrame {
 
         jLabel7.setText("IDalumno");
 
+        jBlimpiar.setMnemonic('L');
         jBlimpiar.setText("Limpiar");
         jBlimpiar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -110,6 +123,7 @@ public class GestionDeAlumnos extends javax.swing.JInternalFrame {
             }
         });
 
+        jBbuscarporID.setMnemonic('U');
         jBbuscarporID.setText("Buscar por ID");
         jBbuscarporID.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -216,7 +230,7 @@ public class GestionDeAlumnos extends javax.swing.JInternalFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 483, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 495, Short.MAX_VALUE)
         );
 
         pack();
@@ -224,16 +238,17 @@ public class GestionDeAlumnos extends javax.swing.JInternalFrame {
 
 
     private void jBnuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBnuevoActionPerformed
-        // limpiar();
-//        AlumnoData alu = new AlumnoData();
+
         alumnoActual = new Alumno(Integer.parseInt(jTdocumento.getText()), jTapellido.getText(), jTnombre.getText(), jDateFechaNacimiento.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate(), jCBestado.isSelected());
+
         try {
-
-
-            if (jTapellido.getText().isEmpty() || jTdocumento.getText().isEmpty() || jTnombre.getText().isEmpty() || jDateFechaNacimiento.getDate() == null || jDateFechaNacimiento.getDate().after(Date.valueOf(LocalDate.now()))) {
+            if (jTapellido.getText().isEmpty() || jTdocumento.getText().isEmpty() || jTnombre.getText().isEmpty() || jDateFechaNacimiento.getDate() == null) {
                 JOptionPane.showMessageDialog(this, "Por favor complete todos los campos");
+            } else if (jDateFechaNacimiento.getDate().after(Date.valueOf(LocalDate.now()))) {
+                JOptionPane.showMessageDialog(this, "Ingrese una fecha de nacimiento valida");
+            } else {
+                aluData.nuevoAlumno(alumnoActual);
             }
-            aluData.guardarAlumno(alumnoActual);
             limpiar();
         } catch (NumberFormatException nfe) {
             JOptionPane.showMessageDialog(this, "ERROR: Debe ingresar un numero de DNI valido");
@@ -250,8 +265,6 @@ public class GestionDeAlumnos extends javax.swing.JInternalFrame {
         } else {
             JOptionPane.showMessageDialog(this, "No hay un alumno seleccionado para eliminar");
         }
-        
-       
 
 
     }//GEN-LAST:event_jBeliminarActionPerformed
@@ -267,12 +280,17 @@ public class GestionDeAlumnos extends javax.swing.JInternalFrame {
             alumno.setNombre(jTnombre.getText());
             alumno.setFechaNacimiento(jDateFechaNacimiento.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
 
-            if (jTdocumento.getText().isEmpty() || jTapellido.getText().isEmpty() || jTnombre.getText().isEmpty() ||  jDateFechaNacimiento.getDate() == null || jDateFechaNacimiento.getDate().after(Date.valueOf(LocalDate.now()))) {
+            if (jTdocumento.getText().isEmpty() || jTapellido.getText().isEmpty() || jTnombre.getText().isEmpty() || jDateFechaNacimiento.getDate() == null) {
                 JOptionPane.showMessageDialog(this, "Por favor complete todos los campos");
+            } else if (jDateFechaNacimiento.getDate().after(Date.valueOf(LocalDate.now()))) {
+                JOptionPane.showMessageDialog(this, "Ingrese una fecha de nacimiento valida");
+            } else {
+                alu.modificarAlumno(alumno);
+                limpiar();
             }
-            alu.modificarAlumno(alumno);
+
             System.out.println(alumno);
-            limpiar();
+            
         } catch (NumberFormatException nfe) {
             JOptionPane.showMessageDialog(null, "ERROR, asegúrate de ingresar valores válidos");
 
@@ -289,16 +307,15 @@ public class GestionDeAlumnos extends javax.swing.JInternalFrame {
         );
 
         if (confirmacion == JOptionPane.YES_OPTION) {
-            dispose(); // Cierra la ventana actual si el usuario confirma
+            dispose(); 
         }
-        // Si el usuario selecciona "No" o cierra el cuadro de diálogo, la ventana no se cerrará.
+        
 
     }//GEN-LAST:event_jBsalirActionPerformed
 
     private void jBbuscarporDNIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBbuscarporDNIActionPerformed
         try {
 
-            //System.out.println(alumnoActual);
             Integer dni = Integer.parseInt(jTdocumento.getText());
             alumnoActual = aluData.buscarAlumnoPorDni(dni);
 
@@ -320,6 +337,7 @@ public class GestionDeAlumnos extends javax.swing.JInternalFrame {
             } else {
                 JOptionPane.showMessageDialog(null, "No existe un alumno con ese DNI");
             }
+
         } catch (NumberFormatException nfe) {
             JOptionPane.showMessageDialog(null, "ERROR, debe ingresar un numero de DNI valido");
 
@@ -342,7 +360,6 @@ public class GestionDeAlumnos extends javax.swing.JInternalFrame {
     private void jBbuscarporIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBbuscarporIDActionPerformed
         try {
 
-            //System.out.println(alumnoActual);
             Integer ID = Integer.parseInt(jTidAlumno.getText());
             alumnoActual = aluData.buscarAlumnoPorId(ID);
 
@@ -405,15 +422,4 @@ public void limpiar() {
         jDateFechaNacimiento.setDate(null);
     }
 
-//    public boolean revisarString(String nombre) {
-//        String x = nombre.toUpperCase();
-//        for (int i = 0; i <= x.length() - 1; i++) {
-//            if (x.charAt(i) < 65 || x.charAt(i) > 90) {
-//                return false;
-//            } else if (x.substring(i, i + 1).equals(" ")) {
-//                return false;
-//            }
-//        }
-//        return true;
-//    }
 }

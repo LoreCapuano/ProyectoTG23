@@ -22,7 +22,7 @@ public class AlumnoData {
         con = Conexion.getConexion();
     }
 
-    public void guardarAlumno(Alumno alumno) {
+    public void nuevoAlumno(Alumno alumno) {
         String sql = "INSERT INTO alumno (dni,apellido, nombre, fechaNacimiento,estado)"
                 + "VALUES (?, ?, ?, ?, ? )";
 

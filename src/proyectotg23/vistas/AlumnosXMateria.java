@@ -151,17 +151,17 @@ public class AlumnosXMateria extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jCBoxMateriaActionPerformed
 
     private void jCBoxMateriaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jCBoxMateriaItemStateChanged
-        
+
         if (evt.getStateChange() == ItemEvent.SELECTED) {
-        Materia mat= (Materia) jCBoxMateria.getSelectedItem();
-        borrarFilaTabla();
-        cargarTabla();
-        
+            Materia mat = (Materia) jCBoxMateria.getSelectedItem();
+            borrarFilaTabla();
+            cargarTabla();
+
         }
     }//GEN-LAST:event_jCBoxMateriaItemStateChanged
 
     private void jBsalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBsalirActionPerformed
-       int confirmacion = JOptionPane.showConfirmDialog(
+        int confirmacion = JOptionPane.showConfirmDialog(
                 null,
                 "¿Está seguro de que desea salir?",
                 "Confirmar Salida",
@@ -169,7 +169,7 @@ public class AlumnosXMateria extends javax.swing.JInternalFrame {
         );
 
         if (confirmacion == JOptionPane.YES_OPTION) {
-            dispose(); // Cierra la ventana actual si el usuario confirma
+            dispose();
         }
     }//GEN-LAST:event_jBsalirActionPerformed
 
@@ -186,9 +186,7 @@ public class AlumnosXMateria extends javax.swing.JInternalFrame {
 public void cargarCombo() {
 
         for (Materia item : ListaM) {
-
             jCBoxMateria.addItem(item);
-
         }
         jCBoxMateria.setSelectedIndex(-1);
     }
@@ -216,7 +214,7 @@ public void cargarCombo() {
 
         }
     }
-    
+
     private void borrarFilaTabla() {
         int indice = modelo.getRowCount() - 1;
 

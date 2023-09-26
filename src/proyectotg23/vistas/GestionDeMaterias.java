@@ -1,4 +1,3 @@
-
 package proyectotg23.vistas;
 
 import java.awt.event.KeyEvent;
@@ -11,10 +10,8 @@ import proyectotg23.accesoADatos.MateriaData;
 import proyectotg23.entidades.Alumno;
 import proyectotg23.entidades.Materia;
 
-
 public class GestionDeMaterias extends javax.swing.JInternalFrame {
-        
-   
+
     public GestionDeMaterias() {
         initComponents();
         jBnuevo.setMnemonic(KeyEvent.VK_N);
@@ -22,11 +19,11 @@ public class GestionDeMaterias extends javax.swing.JInternalFrame {
         jBmodificar.setMnemonic(KeyEvent.VK_M);
         jBsalir.setMnemonic(KeyEvent.VK_S);
         jBbuscar.setMnemonic(KeyEvent.VK_B);
-        
+
     }
-private Materia materiaActual=new Materia();
-private MateriaData mateData=new MateriaData();
-    
+    private Materia materiaActual = new Materia();
+    private MateriaData mateData = new MateriaData();
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -46,6 +43,7 @@ private MateriaData mateData=new MateriaData();
         jBeliminar = new javax.swing.JButton();
         jBmodificar = new javax.swing.JButton();
         jBsalir = new javax.swing.JButton();
+        jBlimpiar = new javax.swing.JButton();
 
         setClosable(true);
         setIconifiable(true);
@@ -66,12 +64,6 @@ private MateriaData mateData=new MateriaData();
 
         jLabel5.setText("Estado");
 
-        jTnombre.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTnombreActionPerformed(evt);
-            }
-        });
-
         jBbuscar.setMnemonic('B');
         jBbuscar.setText("Buscar");
         jBbuscar.addActionListener(new java.awt.event.ActionListener() {
@@ -90,6 +82,11 @@ private MateriaData mateData=new MateriaData();
 
         jBeliminar.setMnemonic('E');
         jBeliminar.setText("Eliminar");
+        jBeliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBeliminarActionPerformed(evt);
+            }
+        });
 
         jBmodificar.setMnemonic('M');
         jBmodificar.setText("Modificar");
@@ -101,16 +98,29 @@ private MateriaData mateData=new MateriaData();
 
         jBsalir.setMnemonic('S');
         jBsalir.setText("Salir");
+        jBsalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBsalirActionPerformed(evt);
+            }
+        });
+
+        jBlimpiar.setText("Limpiar");
+        jBlimpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBlimpiarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(204, 204, 204)
-                        .addComponent(jLabel2))
+                .addGap(204, 204, 204)
+                .addComponent(jLabel2)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -120,23 +130,25 @@ private MateriaData mateData=new MateriaData();
                             .addComponent(jLabel5))
                         .addGap(79, 79, 79)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jBestado)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jBestado)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jBlimpiar))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jTcodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(125, 125, 125)
                                 .addComponent(jBbuscar))
                             .addComponent(jTnombre, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTaño, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(62, 62, 62)
-                .addComponent(jBnuevo)
-                .addGap(63, 63, 63)
-                .addComponent(jBeliminar)
-                .addGap(55, 55, 55)
-                .addComponent(jBmodificar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
-                .addComponent(jBsalir)
+                            .addComponent(jTaño, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(62, 62, 62)
+                        .addComponent(jBnuevo)
+                        .addGap(63, 63, 63)
+                        .addComponent(jBeliminar)
+                        .addGap(55, 55, 55)
+                        .addComponent(jBmodificar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                        .addComponent(jBsalir)))
                 .addGap(60, 60, 60))
         );
         jPanel1Layout.setVerticalGroup(
@@ -159,16 +171,21 @@ private MateriaData mateData=new MateriaData();
                         .addComponent(jLabel4))
                     .addComponent(jTaño, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(19, 19, 19)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel5)
-                    .addComponent(jBestado))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jBnuevo)
-                    .addComponent(jBeliminar)
-                    .addComponent(jBmodificar)
-                    .addComponent(jBsalir))
-                .addGap(42, 42, 42))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel5)
+                            .addComponent(jBestado))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jBnuevo)
+                            .addComponent(jBeliminar)
+                            .addComponent(jBmodificar)
+                            .addComponent(jBsalir))
+                        .addGap(42, 42, 42))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jBlimpiar)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -185,22 +202,17 @@ private MateriaData mateData=new MateriaData();
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTnombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTnombreActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTnombreActionPerformed
-
     private void jBmodificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBmodificarActionPerformed
         try {
-            //Integer codigo = Integer.parseInt(jTxtCodigo.getText());
-            Integer año= Integer.parseInt(jTaño.getText());
-            String nombre= jTnombre.getText();
+
+            Integer año = Integer.parseInt(jTaño.getText());
+            String nombre = jTnombre.getText();
 
             if (jTnombre.getText().isEmpty() || jTaño.getText().isEmpty()) {
                 JOptionPane.showMessageDialog(this, "Por favor complete todos los campos");
                 return;
             }
 
-            
             boolean Estado = jBestado.isSelected();
             if (materiaActual == null) {
 
@@ -214,30 +226,27 @@ private MateriaData mateData=new MateriaData();
                 mateData.modificarMateria(materiaActual);
 
             }
-
+            limpiar();
         } catch (NumberFormatException ex) {
             JOptionPane.showMessageDialog(this, "Debes ingresar un nombre de la materia");
 
     }//GEN-LAST:event_jBmodificarActionPerformed
     }
     private void jBnuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBnuevoActionPerformed
+        materiaActual = new Materia(jTnombre.getText(),Integer.parseInt(jTaño.getText()), jBestado.isSelected());
         try {
-            
-            materiaActual.setNombre(jTnombre.getText());
-            materiaActual.setAño (Integer.parseInt(jTaño.getText()));
-            materiaActual.setEstado(jBestado.isSelected());
-            
 
-            if (jTnombre.getText().isEmpty() || jTaño.getText().isEmpty() ) {
+            if (jTnombre.getText().isEmpty() || jTaño.getText().isEmpty()) {
                 JOptionPane.showMessageDialog(this, "Por favor complete todos los campos");
             }
             mateData.nuevaMateria(materiaActual);
-            System.out.println(materiaActual);
             limpiar();
         } catch (NumberFormatException nfe) {
-            JOptionPane.showMessageDialog(null, "ERROR, asegúrate de ingresar valores válidos");
-
+            JOptionPane.showMessageDialog(this, "ERROR: Debe ingresar datos validos");
+            
         }
+
+
 
     }//GEN-LAST:event_jBnuevoActionPerformed
 
@@ -247,9 +256,9 @@ private MateriaData mateData=new MateriaData();
             materiaActual = mateData.buscarMateria(codigo);
             if (materiaActual != null) {
                 int Año = materiaActual.getAño();
-                Boolean estado=materiaActual.isEstado();
+                Boolean estado = materiaActual.isEstado();
                 int año = materiaActual.getAño();
-                
+
                 jTnombre.setText(materiaActual.getNombre());
                 jBestado.setSelected(materiaActual.isEstado());
                 jTaño.setText(String.valueOf(materiaActual.getAño()));
@@ -260,11 +269,42 @@ private MateriaData mateData=new MateriaData();
         }
     }//GEN-LAST:event_jBbuscarActionPerformed
 
+    private void jBeliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBeliminarActionPerformed
+        if (materiaActual != null) {
+            mateData.eliminarMateria(materiaActual.getIdMateria());
+            materiaActual = null;
+            limpiar();
+
+        } else {
+            JOptionPane.showMessageDialog(this, "No hay una materia seleccionada para eliminar");
+        }
+    }//GEN-LAST:event_jBeliminarActionPerformed
+
+    private void jBlimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBlimpiarActionPerformed
+        limpiar();
+    }//GEN-LAST:event_jBlimpiarActionPerformed
+
+    private void jBsalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBsalirActionPerformed
+        int confirmacion = JOptionPane.showConfirmDialog(
+                null,
+                "¿Está seguro de que desea salir?",
+                "Confirmar Salida",
+                JOptionPane.YES_NO_OPTION
+        );
+
+        if (confirmacion == JOptionPane.YES_OPTION) {
+            dispose(); 
+        }
+        
+
+    }//GEN-LAST:event_jBsalirActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBbuscar;
     private javax.swing.JButton jBeliminar;
     private javax.swing.JRadioButton jBestado;
+    private javax.swing.JButton jBlimpiar;
     private javax.swing.JButton jBmodificar;
     private javax.swing.JButton jBnuevo;
     private javax.swing.JButton jBsalir;
@@ -283,5 +323,6 @@ private MateriaData mateData=new MateriaData();
         jTcodigo.setText("");
         jTnombre.setText("");
         jTaño.setText("");
+        jBestado.setText(null);
     }
 }

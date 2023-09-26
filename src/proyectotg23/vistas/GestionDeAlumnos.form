@@ -31,7 +31,7 @@
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jPanel1" alignment="0" pref="491" max="32767" attributes="0"/>
+          <Component id="jPanel1" alignment="0" pref="499" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
@@ -194,6 +194,7 @@
         </Component>
         <Component class="javax.swing.JButton" name="jBnuevo">
           <Properties>
+            <Property name="mnemonic" type="int" value="78"/>
             <Property name="text" type="java.lang.String" value="Nuevo"/>
           </Properties>
           <Events>
@@ -202,6 +203,7 @@
         </Component>
         <Component class="javax.swing.JButton" name="jBeliminar">
           <Properties>
+            <Property name="mnemonic" type="int" value="69"/>
             <Property name="text" type="java.lang.String" value="Eliminar"/>
           </Properties>
           <Events>
@@ -210,6 +212,7 @@
         </Component>
         <Component class="javax.swing.JButton" name="jBmodificar">
           <Properties>
+            <Property name="mnemonic" type="int" value="77"/>
             <Property name="text" type="java.lang.String" value="Modificar"/>
           </Properties>
           <Events>
@@ -218,6 +221,7 @@
         </Component>
         <Component class="javax.swing.JButton" name="jBsalir">
           <Properties>
+            <Property name="mnemonic" type="int" value="83"/>
             <Property name="text" type="java.lang.String" value="Salir"/>
           </Properties>
           <Events>
@@ -226,6 +230,7 @@
         </Component>
         <Component class="javax.swing.JButton" name="jBbuscarporDNI">
           <Properties>
+            <Property name="mnemonic" type="int" value="66"/>
             <Property name="text" type="java.lang.String" value="Buscar"/>
           </Properties>
           <Events>
@@ -253,6 +258,7 @@
         </Component>
         <Component class="javax.swing.JButton" name="jBlimpiar">
           <Properties>
+            <Property name="mnemonic" type="int" value="76"/>
             <Property name="text" type="java.lang.String" value="Limpiar"/>
           </Properties>
           <Events>
@@ -261,6 +267,7 @@
         </Component>
         <Component class="javax.swing.JButton" name="jBbuscarporID">
           <Properties>
+            <Property name="mnemonic" type="int" value="85"/>
             <Property name="text" type="java.lang.String" value="Buscar por ID"/>
           </Properties>
           <Events>

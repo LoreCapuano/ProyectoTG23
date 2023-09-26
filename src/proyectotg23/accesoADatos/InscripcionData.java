@@ -15,8 +15,8 @@ import proyectotg23.entidades.Materia;
 public class InscripcionData {
 
     private Connection con = null;
-    private MateriaData matdata = new MateriaData(); //MateriaData md
-    private AlumnoData aludata = new AlumnoData(); //AlumnoData ad
+    private MateriaData matdata = new MateriaData(); 
+    private AlumnoData aludata = new AlumnoData();
 
     public InscripcionData() {
         con = Conexion.getConexion();
@@ -47,7 +47,7 @@ public class InscripcionData {
     }
 
     public List<Inscripcion> obtenerInscripciones() {
-        ArrayList<Inscripcion> inscripciones = new ArrayList();//cursadas
+        ArrayList<Inscripcion> inscripciones = new ArrayList();
         String sql = "SELECT * FROM inscripcion";
         try {
 
@@ -61,7 +61,7 @@ public class InscripcionData {
                 inscripto.setAlumno(nombre);
                 inscripto.setMateria(nueva);
                 inscripto.setNota(rs.getDouble("nota"));
-                inscripciones.add(inscripto); //cursadas.add(insc)
+                inscripciones.add(inscripto); 
             }
             ps.close();
 
@@ -74,7 +74,7 @@ public class InscripcionData {
 //   
 
     public List<Inscripcion> obtenerInscripcionesPorAlumno(int idAlumno) {
-        ArrayList<Inscripcion> inscripciones = new ArrayList();//cursadas
+        ArrayList<Inscripcion> inscripciones = new ArrayList();
         String sql = "SELECT * FROM inscripcion WHERE idAlumno=? ";
         try {
 
@@ -85,12 +85,12 @@ public class InscripcionData {
             while (rs.next()) {
                 Inscripcion inscripto = new Inscripcion();//insc
                 inscripto.setIdInscripcion(rs.getInt("idInscripto"));
-                Alumno nombre = aludata.buscarAlumnoPorId(rs.getInt("idAlumno"));//Alumno alu
-                Materia nueva = matdata.buscarMateria(rs.getInt("idMateria")); //Materia mat
+                Alumno nombre = aludata.buscarAlumnoPorId(rs.getInt("idAlumno"));
+                Materia nueva = matdata.buscarMateria(rs.getInt("idMateria"));
                 inscripto.setAlumno(nombre);
                 inscripto.setMateria(nueva);
                 inscripto.setNota(rs.getDouble("nota"));
-                inscripciones.add(inscripto); //cursadas.add(insc)
+                inscripciones.add(inscripto); 
             }
             ps.close();
 
@@ -198,7 +198,7 @@ public class InscripcionData {
 
     public List<Alumno> obtenerAlumnosMateria(String nombre) {
 
-        ArrayList<Alumno> alumnos = new ArrayList(); //alumnos es alumnosMateria
+        ArrayList<Alumno> alumnos = new ArrayList(); 
         String sql = "SELECT * FROM alumno a JOIN inscripcion i ON (a.idAlumno = i.idAlumno) JOIN materia m ON (i.idMateria = m.idMateria) WHERE m.nombre LIKE ?";
 
         try {

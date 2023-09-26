@@ -27,18 +27,17 @@ public class CargaDeNotas extends javax.swing.JInternalFrame {
 
     private DefaultTableModel modelo = new DefaultTableModel() {
         public boolean isCellEditable(int fila, int col) {
-           
-                return false;
-            
+
+            return false;
+
         }
     };
 
     public CargaDeNotas() {
 
         initComponents();
-        jBguardar.setMnemonic(KeyEvent.VK_N);
+        jBguardar.setMnemonic(KeyEvent.VK_G);
         jBsalir.setMnemonic(KeyEvent.VK_S);
-
         cargarCombo();
         armarCabecera();
 
@@ -206,9 +205,9 @@ public class CargaDeNotas extends javax.swing.JInternalFrame {
         );
 
         if (confirmacion == JOptionPane.YES_OPTION) {
-            dispose(); // Cierra la ventana actual si el usuario confirma
+            dispose();
         }
-        // Si el usuario selecciona "No" o cierra el cuadro de diálogo,
+
     }//GEN-LAST:event_jBsalirActionPerformed
 
     private void jBguardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBguardarActionPerformed

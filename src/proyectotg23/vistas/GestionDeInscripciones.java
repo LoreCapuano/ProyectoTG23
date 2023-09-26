@@ -1,4 +1,3 @@
-
 package proyectotg23.vistas;
 
 import java.util.List;
@@ -34,7 +33,7 @@ public class GestionDeInscripciones extends javax.swing.JInternalFrame {
         ListaA = aluData.listarAlumnos();
         modelo = new DefaultTableModel();
         insData = new InscripcionData();
-    
+
         cargarCombo();
         armarCabecera();
     }
@@ -236,7 +235,7 @@ public class GestionDeInscripciones extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jRBmateriasinscriptasActionPerformed
 
     private void jRBmatNoInscActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRBmatNoInscActionPerformed
-         borrarFilaTabla();
+        borrarFilaTabla();
         jRBmateriasinscriptas.setSelected(false);
         cargarMateriasNoInscriptas();
         jBinscribir.setEnabled(true);
@@ -245,34 +244,32 @@ public class GestionDeInscripciones extends javax.swing.JInternalFrame {
 
     private void jBinscribirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBinscribirActionPerformed
         int filaseleccionada = jTmaterias.getSelectedRow();
-        if (filaseleccionada!=-1){
-            Alumno a = (Alumno)jCBoxalumno.getSelectedItem();//me devuelve un objeto y lo casteo a Alumno
-            int idmateria = (Integer)modelo.getValueAt(filaseleccionada,0);//el primer parametro es la fila seleccionada y el segundo la columna,el id de la materia esta en la columna 0, me devuleve un obj y lo casteo a Integer
-            String nombreMateria = (String)modelo.getValueAt(filaseleccionada,1);
-            int añoMateria =(Integer) modelo.getValueAt(filaseleccionada,2);
-            Materia m = new Materia(idmateria,nombreMateria,añoMateria,true);
-            Inscripcion i = new Inscripcion(0,a,m);
+        if (filaseleccionada != -1) {
+            Alumno a = (Alumno) jCBoxalumno.getSelectedItem();//me devuelve un objeto y lo casteo a Alumno
+            int idmateria = (Integer) modelo.getValueAt(filaseleccionada, 0);//el primer parametro es la fila seleccionada y el segundo la columna,el id de la materia esta en la columna 0, me devuleve un obj y lo casteo a Integer
+            String nombreMateria = (String) modelo.getValueAt(filaseleccionada, 1);
+            int añoMateria = (Integer) modelo.getValueAt(filaseleccionada, 2);
+            Materia m = new Materia(idmateria, nombreMateria, añoMateria, true);
+            Inscripcion i = new Inscripcion(0, a, m);
             insData.guardarInscripciones(i);
             borrarFilaTabla();
             cargarMateriasNoInscriptas();
-            
-        }
-        else {
+
+        } else {
             JOptionPane.showMessageDialog(null, "debe seleccionar una fila");
         }
     }//GEN-LAST:event_jBinscribirActionPerformed
 
     private void jBanularInscripcionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBanularInscripcionActionPerformed
         int filaselecc = jTmaterias.getSelectedRow();
-        if (filaselecc!=-1){
-            Alumno a = (Alumno)jCBoxalumno.getSelectedItem();
-            int idmateria =(Integer) modelo.getValueAt(filaselecc, 0);
+        if (filaselecc != -1) {
+            Alumno a = (Alumno) jCBoxalumno.getSelectedItem();
+            int idmateria = (Integer) modelo.getValueAt(filaselecc, 0);
             insData.borrarInscripcionMateriaAlumno(a.getIdAlumno(), idmateria);
             //JOptionPane.showMessageDialog(this,"Materia anulada correctamente");
             borrarFilaTabla();
             cargarMateriasInscriptas();
-        }
-        else {
+        } else {
             JOptionPane.showMessageDialog(null, "Ud debe seleccionar una materia ");
         }
     }//GEN-LAST:event_jBanularInscripcionActionPerformed
@@ -286,9 +283,9 @@ public class GestionDeInscripciones extends javax.swing.JInternalFrame {
         );
 
         if (confirmacion == JOptionPane.YES_OPTION) {
-            dispose(); // Cierra la ventana actual si el usuario confirma
+            dispose();
         }
-        // Si el usuario selecciona "No" o cierra el cuadro de diálogo, la ventana no se cerrará.
+
     }//GEN-LAST:event_jBsalirActionPerformed
 
 
@@ -309,7 +306,6 @@ public class GestionDeInscripciones extends javax.swing.JInternalFrame {
     private javax.swing.JTable jTmaterias;
     // End of variables declaration//GEN-END:variables
 
-    
     private void armarCabecera() {
         modelo.addColumn("ID");
         modelo.addColumn("Nombre");
@@ -352,10 +348,9 @@ public class GestionDeInscripciones extends javax.swing.JInternalFrame {
     }
 
     private void cargarMateriasInscriptas() {
-//    borrarFilaTabla();
+
         Alumno selecc = (Alumno) jCBoxalumno.getSelectedItem();
-//        List<Materia> list = (List) insData.obtenerMateriasCursadas(selecc.getIdAlumno());
-        List<Materia> ListaM=insData.obtenerMateriasCursadas(selecc.getIdAlumno());
+        List<Materia> ListaM = insData.obtenerMateriasCursadas(selecc.getIdAlumno());
         for (Materia m : ListaM) {
             modelo.addRow(new Object[]{m.getIdMateria(), m.getNombre(), m.getAño()});
 
