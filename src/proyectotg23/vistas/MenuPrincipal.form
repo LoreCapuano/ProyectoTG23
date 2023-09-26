@@ -41,7 +41,7 @@
         </Menu>
         <Menu class="javax.swing.JMenu" name="jMenuAdministracion">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Aministracion"/>
+            <Property name="text" type="java.lang.String" value="Administracion"/>
           </Properties>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="jmiManejoInsc">
@@ -64,7 +64,7 @@
         </Menu>
         <Menu class="javax.swing.JMenu" name="jmiConsultas">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Conultas"/>
+            <Property name="text" type="java.lang.String" value="Consultas"/>
           </Properties>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="jmiAlumnoxMateria">

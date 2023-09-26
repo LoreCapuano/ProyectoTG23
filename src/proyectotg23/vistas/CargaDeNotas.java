@@ -17,20 +17,24 @@ import proyectotg23.entidades.Materia;
 
 public class CargaDeNotas extends javax.swing.JInternalFrame {
 
-    private Alumno al;
-    private AlumnoData aluData;
-    private InscripcionData inscData ;
-    private Inscripcion ins;
-    private List<Alumno> ListaA ;
-    private List<Inscripcion> ListaI ;
-       
-    private DefaultTableModel modelo ;
+    private Alumno al = new Alumno();
+    private AlumnoData aluData = new AlumnoData();
+    private InscripcionData inscData = new InscripcionData();
+    private Inscripcion ins = new Inscripcion();
+    private List<Alumno> ListaA = new ArrayList<>();
+    private List<Inscripcion> ListaI = new ArrayList<>();
 
+    private DefaultTableModel modelo = new DefaultTableModel() {
+        public boolean isCellEditable(int fila, int col) {
+           
+                return false;
+            
+        }
+    };
 
     public CargaDeNotas() {
 
         initComponents();
-
         cargarCombo();
         armarCabecera();
 
@@ -81,11 +85,6 @@ public class CargaDeNotas extends javax.swing.JInternalFrame {
         jCBoxalumno.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 jCBoxalumnoItemStateChanged(evt);
-            }
-        });
-        jCBoxalumno.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCBoxalumnoActionPerformed(evt);
             }
         });
 
@@ -207,27 +206,29 @@ public class CargaDeNotas extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jBsalirActionPerformed
 
     private void jBguardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBguardarActionPerformed
-//        int IdAlumno=al.getIdAlumno();
-//        int IdMateria= Integer.parseInt(jTFcodigo.getText());
-//        int nota=(Integer.parseInt(jTFnota.getText()));
-//        
-//        inscData.actualizarNota(IdAlumno, IdMateria, nota);
-//        
-//        jTFcodigo.setText("");
-//        jTFnota.setText("");
+        al = (Alumno) jCBoxalumno.getSelectedItem();
+        int IdAlumno = al.getIdAlumno();
+        int IdMateria = Integer.parseInt(jTFcodigo.getText());
+        int nota = (Integer.parseInt(jTFnota.getText()));
 
-        
+        inscData.actualizarNota(IdAlumno, IdMateria, nota);
+
+        borrarFilaTabla();
+        cargarTabla(al.getIdAlumno());
+        jTFcodigo.setText("");
+        jTFnota.setText("");
+
+
     }//GEN-LAST:event_jBguardarActionPerformed
 
     private void jCBoxalumnoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jCBoxalumnoItemStateChanged
-        
+        borrarFilaTabla();
 
-
+        if (evt.getStateChange() == ItemEvent.SELECTED) {
+            Alumno al = (Alumno) jCBoxalumno.getSelectedItem();
+            cargarTabla(al.getIdAlumno());
+        }
     }//GEN-LAST:event_jCBoxalumnoItemStateChanged
-
-    private void jCBoxalumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBoxalumnoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jCBoxalumnoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -246,8 +247,10 @@ public class CargaDeNotas extends javax.swing.JInternalFrame {
     private javax.swing.JTable jTmaterias;
     // End of variables declaration//GEN-END:variables
 public void cargarCombo() {
+        AlumnoData aluData = new AlumnoData();
 
-        for (Alumno item : aluData.listarAlumnos()) {
+        ListaA = aluData.listarAlumnos();
+        for (Alumno item : ListaA) {
 
             jCBoxalumno.addItem(item);
 
@@ -271,6 +274,19 @@ public void cargarCombo() {
         for (int i = indice; i >= 0; i--) {
             modelo.removeRow(i);
 
+        }
+    }
+
+    private void cargarTabla(int idAlumno) {
+        InscripcionData inscData = new InscripcionData();
+        List<Inscripcion> insc = inscData.obtenerInscripcionesPorAlumno(idAlumno);
+        for (Inscripcion inscripcion : insc) {
+            modelo.addRow(new Object[]{
+                inscripcion.getMateria().getIdMateria(),
+                inscripcion.getMateria().getNombre(),
+                inscripcion.getNota()
+
+            });
         }
     }
 }

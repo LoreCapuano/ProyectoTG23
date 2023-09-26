@@ -81,7 +81,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenuMateria);
 
-        jMenuAdministracion.setText("Aministracion");
+        jMenuAdministracion.setText("Administracion");
 
         jmiManejoInsc.setText("Manejo de Inscripciones");
         jmiManejoInsc.addActionListener(new java.awt.event.ActionListener() {
@@ -101,7 +101,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenuAdministracion);
 
-        jmiConsultas.setText("Conultas");
+        jmiConsultas.setText("Consultas");
 
         jmiAlumnoxMateria.setText("Alumnos por Materia");
         jmiAlumnoxMateria.addActionListener(new java.awt.event.ActionListener() {
