@@ -194,34 +194,16 @@ public class InscripcionData {
 
     }
 
-//    public Integer obtenerNota(int idAlumno, int idMateria) {
-//        String sql = "SELECT nota from inscripcion where idAlumno=? and idMateria=?";
-//        int ret=0;
-//        try {
-//            PreparedStatement ps = con.prepareStatement(sql);
-//            ps.setInt(1, idAlumno);
-//            ps.setInt(2, idMateria);
-//            ResultSet rs = ps.executeQuery();
-//            while (rs.next()) {
-//               ret= rs.getInt("nota");
-//            }
-//
-//        } catch (SQLException ex) {
-//
-//            JOptionPane.showMessageDialog(null, "Error al obtener la nota");
-//            
-//        }
-//            return ret;
-//    }
 
-    public List<Alumno> obtenerAlumnosMateria(int idMateria) {
+
+    public List<Alumno> obtenerAlumnosMateria(String nombre) {
 
         ArrayList<Alumno> alumnos = new ArrayList(); //alumnos es alumnosMateria
-        String sql = "SELECT* FROM materia WHERE estado = 1 AND idMateria NOT IN (SELECT idMateria FROM inscripcion WHERE idAlumno = 1);";
+        String sql = "SELECT * FROM alumno a JOIN inscripcion i ON (a.idAlumno = i.idAlumno) JOIN materia m ON (i.idMateria = m.idMateria) WHERE m.nombre LIKE ?";
 
         try {
             PreparedStatement ps = con.prepareStatement(sql);
-            ps.setInt(1, idMateria);
+            ps.setString(1, nombre+"%");
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 Alumno nuevo = new Alumno();
@@ -233,9 +215,9 @@ public class InscripcionData {
                 alumnos.add(nuevo);
 
             }
-            ps.close();;
+            ps.close();
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error en base de datos ");
+            JOptionPane.showMessageDialog(null, "Error en base de datos "+ ex.getMessage());
         }
         return alumnos;
     }

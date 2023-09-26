@@ -106,27 +106,33 @@ public class ProyectoTG23 {
 //   id.actualizarNota(7, 10, 8);//ACTUALIZAR NOTA
 //   id.borrarInscripcionMateriaAlumno(7,10);//ELIMINAR INSCRIPICION FISICA
 
-//        OBTENER INSCRIPCIONES
+//        OBTENER INSCRIPCIONES9
 //            for (Inscripcion inscripto:id.obtenerInscripciones()) {
 //            System.out.println("id "+inscripto.getIdInscripcion());
 //            System.out.println("Alumno "+inscripto.getAlumno().getApellido());
 //            System.out.println("Materia "+ inscripto.getMateria().getNombre());
 //        }
 //         OBTENER INSCRIPCIONES POR ALUMNO
-//                for (Inscripcion inscripto:id.obtenerInscripcionesPorAlumno(12)) {
-//                System.out.println("id "+inscripto.getIdInscripcion());
-//                System.out.println("Alumno "+inscripto.getAlumno().getApellido());
-//                System.out.println("Materia "+ inscripto.getMateria().getNombre());
-        // OBTENER MATERIAS CURSADAS
-        for (Materia materia : id.obtenerMateriasCursadas(12)) {
-            System.out.println("id " + materia.getIdMateria());
-            System.out.println("materia" + materia.getNombre());
-        }
+//        for (Inscripcion inscripto : id.obtenerInscripcionesPorAlumno(12)) {
+//            System.out.println("id " + inscripto.getIdInscripcion());
+//            System.out.println("Alumno " + inscripto.getAlumno().getApellido());
+//            System.out.println("Materia " + inscripto.getMateria().getNombre());
+            // OBTENER MATERIAS CURSADAS
+//        for (Materia materia : id.obtenerMateriasCursadas(12)) {
+//            System.out.println("id " + materia.getIdMateria());
+//            System.out.println("materia" + materia.getNombre());
+//        }
 
-        //OBTENER MATERIAS NO CURSADAS
+            //OBTENER MATERIAS NO CURSADAS
 //                for (Materia materia : id.obtenerMateriasNOCursadas(1)) {
 //            System.out.println("Materias " + materia.getNombre());
 //
 //        }
+
+//obtener alumnos por materia
+
+        System.out.println(id.obtenerAlumnosMateria("lengua"));
+        }
+    
     }
-}
+
