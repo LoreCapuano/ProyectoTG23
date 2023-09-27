@@ -208,6 +208,7 @@ public class InscripcionData {
             while (rs.next()) {
                 Alumno nuevo = new Alumno();
                 nuevo.setIdAlumno(rs.getInt("idAlumno"));
+                nuevo.setDni(rs.getInt("dni"));
                 nuevo.setApellido(rs.getString("apellido"));
                 nuevo.setNombre(rs.getString("nombre"));
                 nuevo.setFechaNacimiento(rs.getDate("fechaNacimiento").toLocalDate());

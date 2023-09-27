@@ -3,10 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Lorena/Documents/NetBeansProjects/ProyectoTG23/src/proyectotg23/entidades/Alumno.java</file>
-            <file>file:/C:/Users/Lorena/Documents/NetBeansProjects/ProyectoTG23/src/proyectotg23/vistas/GestionDeInscripciones.java</file>
+            <file>file:/C:/Users/Lorena/Documents/NetBeansProjects/ProyectoTG23/src/proyectotg23/entidades/Inscripcion.java</file>
+            <file>file:/C:/Users/Lorena/Documents/NetBeansProjects/ProyectoTG23/src/proyectotg23/accesoADatos/MateriaData.java</file>
+            <file>file:/C:/Users/Lorena/Documents/NetBeansProjects/ProyectoTG23/src/proyectotg23/vistas/GestionDeMaterias.java</file>
             <file>file:/C:/Users/Lorena/Documents/NetBeansProjects/ProyectoTG23/src/proyectotg23/vistas/CargaDeNotas.java</file>
-            <file>file:/C:/Users/Lorena/Documents/NetBeansProjects/ProyectoTG23/src/proyectotg23/accesoADatos/AlumnoData.java</file>
             <file>file:/C:/Users/Lorena/Documents/NetBeansProjects/ProyectoTG23/src/proyectotg23/accesoADatos/InscripcionData.java</file>
         </group>
     </open-files>
